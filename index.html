@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPACT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models</h1>
+
+        <div class="authors">
+            <!-- <span>Jane Doe*</span> -->
+            <!-- <span>John Smith*</span> -->
+            <span>Anonymous Authors</span>
+        </div>
+        <!-- <div class="contribution-note">(* indicates equal contribution)</div> -->
+
+        <!-- <div class="conference">
+            In submission
+        </div> -->
+
+        <div class="button-container">
+            <a href="#" class="link-button" target="_blank">
+                <i class="fas fa-file-pdf"></i> Paper
+            </a>
+            <a href="https://github.com" class="link-button" target="_blank">
+                <i class="fab fa-github"></i> Code (coming soon)
+            </a>
+            <a href="#citation" class="link-button">
+                <i class="fas fa-quote-right"></i> BibTeX
+            </a>
+        </div>
+
+        <div class="abstract">
+        We present <strong>SIMPACT</strong>, a test-time, <strong>SIM</strong>ulation-enabled <strong>ACT</strong>ion <strong>P</strong>lanning framework that equips Vision-Language Models (VLMs) with physical reasoning through simulation-in-the-loop world modeling, without requiring any additional training.
+From a single RGB-D observation, SIMPACT efficiently constructs physics simulations, enabling the VLM to propose informed actions, observe simulated rollouts, and iteratively refine its reasoning.
+By integrating language reasoning with physics prediction, our simulation-enabled VLM can understand contact dynamics and action outcomes in a physically grounded way. 
+Our method demonstrates state-of-the-art performance on five challenging, real-world rigid-body and deformable manipulation tasks that require fine-grained physical reasoning, outperforming existing general-purpose robotic manipulation models. 
+Our results demonstrate that embedding physics understanding via efficient simulation into VLM reasoning at test time offers a promising path towards generalizable embodied intelligence.
+        </div>
+
+        <h2>Method Overview</h2>
+        <video class="overview-video" autoplay loop muted playsinline>
+            <source src="assets/overview.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>Pipeline</h2>
+        <div class="pipeline-section">
+            <img src="assets/pipeline.png" alt="Method Pipeline">
+            <p class="caption"> <strong>Method pipeline</strong>. Our method first begins by instantiating a physics simulator given the real-world scene. Next, a VLM-based action sampler and optimizer iteratively refine the action sequence towards task success using simulated rollouts as context. The final optimized actions are then executed in the real world.</p>
+            <img src="assets/perception.png" alt="Perception Pipeline">
+            <p class="caption"><strong>Simulation construction from single RGBD image</strong>. Simulation construction from single RGBD image. Given an RGB-D image and a language task description, our pipeline automatically generates either a mesh-based simulation <strong>(top)</strong> for rigid objects or a particle-based simulation <strong>(bottom)</strong> for deformables. 
+In both cases, we prompt the VLM to infer the relevant physical parameters required for simulation.</p>
+        </div>
+
+        <h2>Results</h2>
+        <div class="results-grid">
+            
+            <div class="result-row">
+                <div class="task-label">Non-toppling Push</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/push.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Bowl Stacking</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/stack.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Pivoting</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/pivoting.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Rope Manipulation</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/rope.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Play-Doh Manipulation</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/playdoh.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <h2>Baseline Comparison</h2>
+        <div class="results-grid">
+             <div class="result-row">
+                <div class="task-label">Non-toppling Push</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/baseline_push.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Bowl Stacking</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/baseline_stack.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Pivoting</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/baseline_pivoting.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Rope Manipulation</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/baseline_rope.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="task-label">Play-Doh Manipulation</div>
+                <div class="video-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/baseline_playdoh.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <h2>Robustness Against Variations</h2>
+        
+        <div class="robustness-row">
+            <video autoplay loop muted playsinline class="robust-video">
+                <source src="assets/variation_push.mp4" type="video/mp4">
+            </video>
+            <div class="robustness-caption">Variation: Different reference objects</div>
+        </div>
+
+        <div class="robustness-row">
+            <video autoplay loop muted playsinline class="robust-video">
+                <source src="assets/variation_stack.mp4" type="video/mp4">
+            </video>
+            <div class="robustness-caption">Variation: Additional distractors</div>
+        </div>
+
+        <div class="robustness-row">
+            <video autoplay loop muted playsinline class="robust-video">
+                <source src="assets/variation_rope.mp4" type="video/mp4">
+            </video>
+            <div class="robustness-caption">Variation: Different rope materials & thickness</div>
+        </div>
+
+        <div class="robustness-row">
+            <video autoplay loop muted playsinline class="robust-video">
+                <source src="assets/variation_playdoh.mp4" type="video/mp4">
+            </video>
+            <div class="robustness-caption">Variation: Different Play-Doh shape & color </div>
+        </div>
+
+        <h2 id="citation">Citation</h2>
+        <pre class="citation-block"><code>@misc{simpact2025,
+  title={SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models},
+  author={},
+  booktitle={arXiv},
+  year={2025}
+}</code></pre>
+
+    </div>
+    <br><br><br>
+
+    <script src="script.js"></script>
+</body>
+</html>

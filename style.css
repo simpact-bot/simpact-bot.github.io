@@ -1,0 +1,199 @@
+/* --- General Styling --- */
+:root {
+    --primary-color: #333;
+    --secondary-color: #555;
+    --accent-color: #2a7ae2;
+    --bg-color: #ffffff;
+    --section-bg: #f9f9f9;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: 600;
+}
+
+h1 { margin-top: 40px; 
+    font-size: 2.5rem; 
+    color: var(--accent-color); /* <--- Add this line */}
+h2 { margin-top: 60px; 
+    border-bottom: 1px; 
+    padding-bottom: 10px;
+    font-size: 2.0rem; 
+}
+
+/* --- Header Section --- */
+.authors {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.authors span { margin: 0 10px; }
+.contribution-note { 
+    font-size: 0.9rem; 
+    color: var(--secondary-color); 
+    text-align: center; 
+    margin-top: -5px;
+}
+
+.conference {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* --- Link Buttons --- */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+    margin-bottom: 30px;
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 24px;
+    background-color: var(--primary-color); /* Dark gray/black */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px; /* Rounded pill shape */
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.link-button:hover {
+    background-color: var(--secondary-color); /* Lighter gray on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    color: #fff;
+}
+
+/* Specific icon adjustments if needed */
+.link-button i {
+    font-size: 1.1em;
+}
+
+/* --- Abstract --- */
+.abstract {
+    text-align: justify;
+    background-color: var(--section-bg);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+/* --- Media Elements (Images & Videos) --- */
+img, video {
+    max-width: 100%;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Video styling to look like blocks (autoplay, no controls) */
+video {
+    width: 100%;
+    object-fit: cover;
+    background-color: #000; /* Placeholder background */
+}
+
+.pipeline-section img {
+    width: 100%;
+}
+
+.caption {
+    text-align: left; 
+    color: #666; 
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* --- Results & Baseline Grids --- */
+/* Layout: Label (Left) -> Video (Right) */
+.results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-row {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* Fixed label width, flexible video width */
+    align-items: center;
+    gap: 15px;
+    /* background: var(--section-bg); */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Restrict video width in Results and Baseline sections */
+.result-row video {
+    max-width: 600px;  /* <--- Adjust this value to make them larger/smaller */
+    width: 100%;       /* Ensures they still shrink on mobile screens */
+    margin: 0;         /* Aligns video to the left, next to the label */
+}
+
+.task-label {
+    font-weight: bold;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* --- Robustness Section --- */
+/* Layout: Video on top, Caption below */
+.robustness-row {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.robust-video {
+    max-width: 80%;
+}
+
+.robustness-caption {
+    margin-top: 8px;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+/* --- Citation --- */
+.citation-block {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 15px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 600px) {
+    .result-row {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+    .task-label {
+        text-align: left;
+        padding-bottom: 5px;
+    }
+}
