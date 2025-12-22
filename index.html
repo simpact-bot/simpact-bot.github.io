@@ -14,18 +14,27 @@
         <h1>SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models</h1>
 
         <div class="authors">
-            <!-- <span>Jane Doe*</span> -->
-            <!-- <span>John Smith*</span> -->
-            <span>Anonymous Authors</span>
+            <span>Haowen Liu*<sup>1</sup></span>
+            <span>Shaoxiong Yao*<sup>2</sup></span>
+            <span>Haonan Chen<sup>3</sup></span>
+            <span>Jiawei Gao<sup>3</sup></span>
+            <br>
+            <span>Jiayuan Mao<sup>4,5</sup></span>
+            <span>Jia-Bin Huang<sup>1</sup></span>
+            <span>Yilun Du<sup>3</sup></span>
+            <!-- <span>Anonymous Authors</span> -->
         </div>
-        <!-- <div class="contribution-note">(* indicates equal contribution)</div> -->
+       
+        <div class="contribution-note">
+            <sup>1</sup>UMD <sup>2</sup>UIUC <sup>3</sup>Harvard <sup>4</sup>Amazon FAR <sup>5</sup>UPenn 
+            <br>
+            (* indicates equal contribution)</div>
+        <br>
 
-        <!-- <div class="conference">
-            In submission
-        </div> -->
+
 
         <div class="button-container">
-            <a href="#" class="link-button" target="_blank">
+            <a href="https://arxiv.org/pdf/2512.05955" class="link-button" target="_blank">
                 <i class="fas fa-file-pdf"></i> Paper
             </a>
             <a href="https://github.com" class="link-button" target="_blank">
@@ -37,11 +46,8 @@
         </div>
 
         <div class="abstract">
-        We present <strong>SIMPACT</strong>, a test-time, <strong>SIM</strong>ulation-enabled <strong>ACT</strong>ion <strong>P</strong>lanning framework that equips Vision-Language Models (VLMs) with physical reasoning through simulation-in-the-loop world modeling, without requiring any additional training.
-From a single RGB-D observation, SIMPACT efficiently constructs physics simulations, enabling the VLM to propose informed actions, observe simulated rollouts, and iteratively refine its reasoning.
-By integrating language reasoning with physics prediction, our simulation-enabled VLM can understand contact dynamics and action outcomes in a physically grounded way. 
-Our method demonstrates state-of-the-art performance on five challenging, real-world rigid-body and deformable manipulation tasks that require fine-grained physical reasoning, outperforming existing general-purpose robotic manipulation models. 
-Our results demonstrate that embedding physics understanding via efficient simulation into VLM reasoning at test time offers a promising path towards generalizable embodied intelligence.
+        <strong>TL;DR:</strong> We present <strong>SIMPACT</strong>, a test-time, <strong>SIM</strong>ulation-enabled <strong>ACT</strong>ion <strong>P</strong>lanning framework that equips Vision-Language Models (VLMs) with physical reasoning through simulation-in-the-loop world modeling, without requiring any additional training.
+From a single RGB-D observation, SIMPACT efficiently constructs physics simulations, enabling the VLM to propose informed actions, observe simulated rollouts, and iteratively refine its reasoning in a physically grounded way. 
         </div>
 
         <h2>Method Overview</h2>
@@ -189,8 +195,8 @@ In both cases, we prompt the VLM to infer the relevant physical parameters requi
         <h2 id="citation">Citation</h2>
         <pre class="citation-block"><code>@misc{simpact2025,
   title={SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models},
-  author={},
-  booktitle={arXiv},
+  author={Liu, Haowen and Yao, Shaoxiong and Chen, Haonan and Gao, Jiawei and Mao, Jiayuan and Huang, Jia-Bin and Du, Yilun},
+  journal={arXiv preprint arXiv:2512.05955},
   year={2025}
 }</code></pre>
 
