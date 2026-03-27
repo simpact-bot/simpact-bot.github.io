@@ -9,45 +9,50 @@
 </head>
 <body>
 
+    <div class="top-bar"></div>
+
     <div class="container">
 
-        <h1>SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models</h1>
+        <header class="hero">
+            <h1>SIMPACT: Simulation-Enabled Action Planning using Vision-Language Models</h1>
 
-        <div class="authors">
-            <span>Haowen Liu*<sup>1</sup></span>
-            <span>Shaoxiong Yao*<sup>2</sup></span>
-            <span>Haonan Chen<sup>3</sup></span>
-            <span>Jiawei Gao<sup>3</sup></span>
-            <br>
-            <span>Jiayuan Mao<sup>4,5</sup></span>
-            <span>Jia-Bin Huang<sup>1</sup></span>
-            <span>Yilun Du<sup>3</sup></span>
-            <!-- <span>Anonymous Authors</span> -->
-        </div>
-       
-        <div class="contribution-note">
-            <sup>1</sup>UMD <sup>2</sup>UIUC <sup>3</sup>Harvard <sup>4</sup>Amazon FAR <sup>5</sup>UPenn 
-            <br>
-            (* indicates equal contribution)</div>
-        <br>
+            <div class="authors">
+                <span>Haowen Liu*<sup>1</sup></span>
+                <span>Shaoxiong Yao*<sup>2</sup></span>
+                <span>Haonan Chen<sup>3</sup></span>
+                <span>Jiawei Gao<sup>3</sup></span>
+                <br>
+                <span>Jiayuan Mao<sup>4,5</sup></span>
+                <span>Jia-Bin Huang<sup>1</sup></span>
+                <span>Yilun Du<sup>3</sup></span>
+            </div>
 
+            <div class="contribution-note">
+                <sup>1</sup>UMD &nbsp;<sup>2</sup>UIUC &nbsp;<sup>3</sup>Harvard &nbsp;<sup>4</sup>Amazon FAR &nbsp;<sup>5</sup>UPenn
+                <br>
+                (* indicates equal contribution)
+            </div>
 
+            <div class="conference-badge">
+                <span class="badge">CVPR 2026</span>
+            </div>
 
-        <div class="button-container">
-            <a href="https://arxiv.org/pdf/2512.05955" class="link-button" target="_blank">
-                <i class="fas fa-file-pdf"></i> Paper
-            </a>
-            <a href="https://github.com" class="link-button" target="_blank">
-                <i class="fab fa-github"></i> Code (coming soon)
-            </a>
-            <a href="#citation" class="link-button">
-                <i class="fas fa-quote-right"></i> BibTeX
-            </a>
-        </div>
+            <div class="button-container">
+                <a href="https://arxiv.org/pdf/2512.05955" class="link-button" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Paper
+                </a>
+                <a href="https://github.com" class="link-button" target="_blank">
+                    <i class="fab fa-github"></i> Code (coming soon)
+                </a>
+                <a href="#citation" class="link-button">
+                    <i class="fas fa-quote-right"></i> BibTeX
+                </a>
+            </div>
+        </header>
 
         <div class="abstract">
-        <strong>TL;DR:</strong> We present <strong>SIMPACT</strong>, a test-time, <strong>SIM</strong>ulation-enabled <strong>ACT</strong>ion <strong>P</strong>lanning framework that equips Vision-Language Models (VLMs) with physical reasoning through simulation-in-the-loop world modeling, without requiring any additional training.
-From a single RGB-D observation, SIMPACT efficiently constructs physics simulations, enabling the VLM to propose informed actions, observe simulated rollouts, and iteratively refine its reasoning in a physically grounded way. 
+            <strong>TL;DR:</strong> We present <strong>SIMPACT</strong>, a test-time, <strong>SIM</strong>ulation-enabled <strong>ACT</strong>ion <strong>P</strong>lanning framework that equips Vision-Language Models (VLMs) with physical reasoning through simulation-in-the-loop world modeling, without requiring any additional training.
+            From a single RGB-D observation, SIMPACT efficiently constructs physics simulations, enabling the VLM to propose informed actions, observe simulated rollouts, and iteratively refine its reasoning in a physically grounded way.
         </div>
 
         <h2>Method Overview</h2>
@@ -59,137 +64,179 @@ From a single RGB-D observation, SIMPACT efficiently constructs physics simulati
         <h2>Pipeline</h2>
         <div class="pipeline-section">
             <img src="assets/pipeline.png" alt="Method Pipeline">
-            <p class="caption"> <strong>Method pipeline</strong>. Our method first begins by instantiating a physics simulator given the real-world scene. Next, a VLM-based action sampler and optimizer iteratively refine the action sequence towards task success using simulated rollouts as context. The final optimized actions are then executed in the real world.</p>
+            <p class="caption"><strong>Method pipeline.</strong> Our method first begins by instantiating a physics simulator given the real-world scene. Next, a VLM-based action sampler and optimizer iteratively refine the action sequence towards task success using simulated rollouts as context. The final optimized actions are then executed in the real world.</p>
             <img src="assets/perception.png" alt="Perception Pipeline">
-            <p class="caption"><strong>Simulation construction from single RGBD image</strong>. Simulation construction from single RGBD image. Given an RGB-D image and a language task description, our pipeline automatically generates either a mesh-based simulation <strong>(top)</strong> for rigid objects or a particle-based simulation <strong>(bottom)</strong> for deformables. 
-In both cases, we prompt the VLM to infer the relevant physical parameters required for simulation.</p>
+            <p class="caption"><strong>Simulation construction from single RGBD image.</strong> Given an RGB-D image and a language task description, our pipeline automatically generates either a mesh-based simulation <strong>(top)</strong> for rigid objects or a particle-based simulation <strong>(bottom)</strong> for deformables. In both cases, we prompt the VLM to infer the relevant physical parameters required for simulation.</p>
         </div>
 
         <h2>Results</h2>
-        <div class="results-grid">
-            
-            <div class="result-row">
-                <div class="task-label">Non-toppling Push</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/push.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-viewport">
+                <button class="carousel-btn prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
 
-            <div class="result-row">
-                <div class="task-label">Bowl Stacking</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/stack.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/push.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Pivoting</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/pivoting.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/stack.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Rope Manipulation</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/rope.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/pivoting.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Play-Doh Manipulation</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/playdoh.mp4" type="video/mp4">
-                    </video>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/rope.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/playdoh.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                    </div>
                 </div>
+                <button class="carousel-btn next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-footer">
+                <div class="carousel-dots">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                </div>
+                <div class="carousel-counter">1 / 5</div>
             </div>
         </div>
 
         <h2>Baseline Comparison</h2>
-        <div class="results-grid">
-             <div class="result-row">
-                <div class="task-label">Non-toppling Push</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/baseline_push.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-viewport">
+                <button class="carousel-btn prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
 
-            <div class="result-row">
-                <div class="task-label">Bowl Stacking</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/baseline_stack.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_push.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Pivoting</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/baseline_pivoting.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_stack.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Rope Manipulation</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/baseline_rope.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_pivoting.mp4" type="video/mp4">
+                            </video>
+                        </div>
 
-            <div class="result-row">
-                <div class="task-label">Play-Doh Manipulation</div>
-                <div class="video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/baseline_playdoh.mp4" type="video/mp4">
-                    </video>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_rope.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_playdoh.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_obstacle.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/baseline_sweeping.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                    </div>
                 </div>
+                <button class="carousel-btn next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-footer">
+                <div class="carousel-dots">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                </div>
+                <div class="carousel-counter">1 / 7</div>
             </div>
         </div>
 
         <h2>Robustness Against Variations</h2>
-        
-        <div class="robustness-row">
-            <video autoplay loop muted playsinline class="robust-video">
-                <source src="assets/variation_push.mp4" type="video/mp4">
-            </video>
-            <div class="robustness-caption">Variation: Different reference objects</div>
-        </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-viewport">
+                <button class="carousel-btn prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
 
-        <div class="robustness-row">
-            <video autoplay loop muted playsinline class="robust-video">
-                <source src="assets/variation_stack.mp4" type="video/mp4">
-            </video>
-            <div class="robustness-caption">Variation: Additional distractors</div>
-        </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/variation_push.mp4" type="video/mp4">
+                            </video>
+                            <div class="slide-caption">Variation: Different reference objects</div>
+                        </div>
 
-        <div class="robustness-row">
-            <video autoplay loop muted playsinline class="robust-video">
-                <source src="assets/variation_rope.mp4" type="video/mp4">
-            </video>
-            <div class="robustness-caption">Variation: Different rope materials & thickness</div>
-        </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/variation_stack.mp4" type="video/mp4">
+                            </video>
+                            <div class="slide-caption">Variation: Additional distractors</div>
+                        </div>
 
-        <div class="robustness-row">
-            <video autoplay loop muted playsinline class="robust-video">
-                <source src="assets/variation_playdoh.mp4" type="video/mp4">
-            </video>
-            <div class="robustness-caption">Variation: Different Play-Doh shape & color </div>
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/variation_rope.mp4" type="video/mp4">
+                            </video>
+                            <div class="slide-caption">Variation: Different rope materials &amp; thickness</div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/variation_playdoh.mp4" type="video/mp4">
+                            </video>
+                            <div class="slide-caption">Variation: Different Play-Doh shape &amp; color</div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="carousel-btn next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-footer">
+                <div class="carousel-dots">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                </div>
+                <div class="carousel-counter">1 / 4</div>
+            </div>
         </div>
 
         <h2 id="citation">Citation</h2>
