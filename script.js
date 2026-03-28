@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Scroll progress indicator
+    const topBar = document.querySelector('.top-bar');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        topBar.style.width = (scrolled / total * 100) + '%';
+    }, { passive: true });
+
     // Initialize all carousels
     document.querySelectorAll('[data-carousel]').forEach(initCarousel);
 
